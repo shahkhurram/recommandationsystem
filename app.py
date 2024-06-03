@@ -38,6 +38,9 @@ selected_movie = st.selectbox(
 )
 
 if st.button('Recommend'):
+    import pickle
+    pickle.dump(movies, open('artificats/movie_list.pkl', 'wb'))
+    pickle.dump(similarity, open('artificats/similarity.pkl', 'wb'))
     recommended_titles, recommended_posters = recommend(selected_movie)
     st.write('Movies similar to "'+selected_movie+'".' )
     col1,col2,col3,col4,col5=st.columns(5)
